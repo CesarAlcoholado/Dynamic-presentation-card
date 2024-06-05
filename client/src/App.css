@@ -1,0 +1,25 @@
+
+.card {
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+.card__container {
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: cornflowerblue;
+  
+  &.title {
+    font-size: 2rem;
+    text-align: left;
+    color: white;
+  }
+}
+}
