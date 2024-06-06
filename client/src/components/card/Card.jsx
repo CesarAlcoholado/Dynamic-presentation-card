@@ -79,7 +79,7 @@ export const Card = ({cardInfo, setCardInfo, name, proffesion, logo}) => {
                   className="flex h-[130px] text-6xl px-12 mb-2 gap-4"
                 >
                   <span className="self-center text-center">
-                    Accede &gt;&gt;&gt;
+                    Access &gt;&gt;&gt;
                   </span>
                   <QrCode companyName={companyName} />
                 </div>
