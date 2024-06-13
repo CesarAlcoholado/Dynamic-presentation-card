@@ -14,7 +14,7 @@ function App() {
   const getCardInfo = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/card?domain=${domain}`
+        `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`
       );
       const data = await response.json();
       setCardInfo(data);
