@@ -24,6 +24,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req,res) => {
+  res.status(200).send("hello world");
+})
+
 app.get("/card", async (req, res) => {
   const domain = req.query.domain;
   const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
