@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { toJpeg, toPng } from "html-to-image";
 import { Card } from "./components/card/Card";
+import axios from "axios";
 
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
 
   const getCardInfo = async () => {
     try {
-      const response = await fetch(
-        `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`,{mode: "no-cors"}
+      const response = await axios.get(
+        `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`
       );
       const data = await response.json();
       setCardInfo(data);
