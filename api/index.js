@@ -1,11 +1,16 @@
 const express = require("express");
 const colorthief = require("colorthief");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
 const {
   findDissimilarColor,
   isDarkColor,
   rgbToHex,
 } = require("./utils/helpers.js");
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
@@ -61,6 +66,6 @@ app.get("/card", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("server is running on port 3000");
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
 });
