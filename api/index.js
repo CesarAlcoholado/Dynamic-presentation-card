@@ -1,7 +1,11 @@
-const express = require('express');
-const colorthief = require('colorthief');
-const cors = require('cors');
-const { findDissimilarColor, isDarkColor, rgbToHex } = require('./utils/helpers.js');
+const express = require("express");
+const colorthief = require("colorthief");
+const cors = require("cors");
+const {
+  findDissimilarColor,
+  isDarkColor,
+  rgbToHex,
+} = require("./utils/helpers.js");
 
 const app = express();
 app.use(cors());
@@ -24,31 +28,39 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req,res) => {
-  res.status(200).send("hello world");
-})
+app.get("/", (req, res) => {
+  try {
+    res.status(200).send("hello world");
+  } catch (error) {
+    console.error(error)
+  }
+});
 
 app.get("/card", async (req, res) => {
   const domain = req.query.domain;
-  const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-  const colorthiefPromises = [
-    colorthief.getColor(url),
-    colorthief.getPalette(url),
-  ];
-  const [primaryColorRGB, paletteRGB] = await Promise.all(colorthiefPromises);
-  const secondaryColorRGB = findDissimilarColor(primaryColorRGB, paletteRGB);
-  res.json({
-    domain,
-    url,
-    primaryColorRGB,
-    primaryColorHex: rgbToHex(...primaryColorRGB),
-    isPrimaryColorDark: isDarkColor(primaryColorRGB),
-    secondaryColorRGB,
-    secondaryColorHex: rgbToHex(...secondaryColorRGB),
-    isSecondaryColorDark: isDarkColor(secondaryColorRGB)
-  });
+  try {
+    const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+    const colorthiefPromises = [
+      colorthief.getColor(url),
+      colorthief.getPalette(url),
+    ];
+    const [primaryColorRGB, paletteRGB] = await Promise.all(colorthiefPromises);
+    const secondaryColorRGB = findDissimilarColor(primaryColorRGB, paletteRGB);
+    res.json({
+      domain,
+      url,
+      primaryColorRGB,
+      primaryColorHex: rgbToHex(...primaryColorRGB),
+      isPrimaryColorDark: isDarkColor(primaryColorRGB),
+      secondaryColorRGB,
+      secondaryColorHex: rgbToHex(...secondaryColorRGB),
+      isSecondaryColorDark: isDarkColor(secondaryColorRGB),
+    });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
-app.listen(3000, ()=> {
-  console.log('server is running on port 3000');
-})
+app.listen(3000, () => {
+  console.log("server is running on port 3000");
+});
