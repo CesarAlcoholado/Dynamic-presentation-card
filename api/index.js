@@ -1,7 +1,7 @@
-import express from 'express';
-import colorthief from 'colorthief';
-import cors from 'cors';
-import { findDissimilarColor, isDarkColor, rgbToHex } from './utils/helpers.js';
+const express = require('express');
+const colorthief = require('colorthief');
+const cors = require('cors');
+const { findDissimilarColor, isDarkColor, rgbToHex } = require('./utils/helpers.js');
 
 const app = express();
 app.use(cors());
