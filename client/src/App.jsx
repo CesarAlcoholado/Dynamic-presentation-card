@@ -19,8 +19,7 @@ function App() {
         `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`
       );
       console.log("response: ", response.data);
-      const data = await response.json();
-      setCardInfo(data.data);
+      setCardInfo(response.data);
     } catch (error) {
       console.error(error);
     }
