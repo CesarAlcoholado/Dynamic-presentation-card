@@ -47,19 +47,21 @@ function App() {
       </h3>
       {!Object.keys(cardInfo).length ? (
         <div className="flex flex-col justify-center container sm my-0 mx-auto h-[350px] w-96 ">
-          <label className="block mb-2 ml-0 text-sm font-medium text-gray-900 dark:text-white">
+          <label htmlFor="domain" className="block mb-2 ml-0 text-sm font-medium text-gray-900 dark:text-white">
             Add site url:{" "}
           </label>
           <input
+          id="domain"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5 ml-0"
             type="text"
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
           />
-          <label className="block mb-2 ml-0 text-sm font-medium text-gray-900 dark:text-white">
+          <label htmlFor="proffesion" className="block mb-2 ml-0 text-sm font-medium text-gray-900 dark:text-white">
             Add your proffession (optional):{" "}
           </label>
           <input
+          id="proffesion"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5 ml-0"
             type="text"
             value={proffesion}
