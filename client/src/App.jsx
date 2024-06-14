@@ -14,12 +14,13 @@ function App() {
 
   const getCardInfo = async () => {
     try {
+      console.log("calling api...");
       const response = await axios.get(
         `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`
       );
       const data = await response.json();
+      console.log("response: ", data.data);
       setCardInfo(data.data);
-
     } catch (error) {
       console.error(error);
     }
