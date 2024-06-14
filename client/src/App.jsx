@@ -18,8 +18,8 @@ function App() {
       const response = await axios.get(
         `https://dynamic-presentation-card.vercel.app/card?domain=${domain}`
       );
+      console.log("response: ", response.data);
       const data = await response.json();
-      console.log("response: ", data.data);
       setCardInfo(data.data);
     } catch (error) {
       console.error(error);
